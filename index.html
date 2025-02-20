@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE AI Percentile Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            display: block;
+            margin: 10px auto;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <span style="top: 10%; left: 15%;"></span>
+        <span style="top: 30%; left: 50%;"></span>
+        <span style="top: 50%; left: 80%;"></span>
+        <span style="top: 70%; left: 20%;"></span>
+        <span style="top: 90%; left: 60%;"></span>
+    </div>
+    <h2><span style="font-size: 2.5rem;"></span> AI-Powered JEE Percentile Predictor</h2>
+    <input type="number" id="marksInput" min="0" max="300" placeholder="Enter your marks (0-300)...">
+    <button onclick="predictPercentile()">Predict My Percentile</button>
+    <p id="result"></p>
+</body>
+</html>
+
+    <script>
+        const percentileData = [
+            { range: [281, 300], percentile: "100 - 99.99989145" },
+            { range: [271, 280], percentile: "99.994681 - 99.997394" },
+            { range: [263, 270], percentile: "99.990990 - 99.994029" },
+            { range: [250, 262], percentile: "99.977205 - 99.988819" },
+            { range: [241, 250], percentile: "99.960163 - 99.975034" },
+            { range: [231, 240], percentile: "99.934980 - 99.956364" },
+            { range: [221, 230], percentile: "99.901113 - 99.928901" },
+            { range: [211, 220], percentile: "99.851616 - 99.893732" },
+            { range: [201, 210], percentile: "99.795063 - 99.845212" },
+            { range: [191, 200], percentile: "99.710831 - 99.782472" },
+            { range: [181, 190], percentile: "99.597399 - 99.688579" },
+            { range: [171, 180], percentile: "99.456939 - 99.573193" },
+            { range: [161, 170], percentile: "99.272084 - 99.431214" },
+            { range: [151, 160], percentile: "99.028614 - 99.239737" },
+            { range: [141, 150], percentile: "98.732734 - 98.990296" },
+            { range: [131, 140], percentile: "98.317414 - 98.666935" },
+            { range: [121, 130], percentile: "97.806746 - 98.278697" },
+            { range: [111, 120], percentile: "97.142937 - 97.685672" },
+            { range: [101, 110], percentile: "96.204550 - 96.945196" },
+            { range: [91, 100], percentile: "94.998594 - 95.978270" },
+            { range: [81, 90], percentile: "93.471231 - 94.889021" },
+            { range: [71, 80], percentile: "91.664041 - 93.214364" },
+            { range: [61, 70], percentile: "89.223612 - 91.180480" },
+            { range: [51, 60], percentile: "85.928670 - 88.850036" },
+            { range: [41, 50], percentile: "81.194840 - 85.450890" },
+            { range: [31, 40], percentile: "74.281729 - 80.207451" }
+        ];
+
+        function predictPercentile() {
+            const marks = parseInt(document.getElementById("marksInput").value);
+            let resultText = "Percentile not found";
+            if (!isNaN(marks) && marks >= 0 && marks <= 300) {
+                for (let data of percentileData) {
+                    if (marks >= data.range[0] && marks <= data.range[1]) {
+                        resultText = `Predicted Percentile: ${data.percentile}`;
+                        break;
+                    }
+                }
+            }
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</body>
+</html>
